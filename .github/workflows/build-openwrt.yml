@@ -14,6 +14,10 @@ on:
   repository_dispatch:
   workflow_dispatch:
     inputs:
+      tag:
+        description: 'Openwrt github repo tag'
+        required: false
+        default: ''
       ssh:
         description: 'SSH connection to Actions'
         required: false
@@ -56,7 +60,16 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
 
-    - name: Clone source code
+    - name: Clone source code by tag
+      if: github.event.inputs.tag != ''
+      working-directory: /workdir
+      run: |
+        df -hT $PWD
+        git clone $REPO_URL:{{ github.event.inputs.tag }} openwrt
+        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+      
+    - name: Clone source code by branch
+      if: github.event.inputs.tag == ''
       working-directory: /workdir
       run: |
         df -hT $PWD
