@@ -11,10 +11,10 @@
 #
 
 # Uncomment a feed source
-cat >> feeds.conf.default <<EOF
-src-git helloworld https://github.com/fw876/helloworld
-src-git passwall https://github.com/xiaorouji/openwrt-passwall
-EOF
+# cat >> feeds.conf.default <<EOF
+# src-git helloworld https://github.com/fw876/helloworld
+# src-git passwall https://github.com/xiaorouji/openwrt-passwall
+# EOF
 
 # Add a feed source
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
