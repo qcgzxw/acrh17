@@ -20,7 +20,7 @@ on:
         default: 'false'
   push:
     branches:
-      - 'master'
+      - 'main'
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
